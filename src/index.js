@@ -1,4 +1,4 @@
-import { fetchCountries } from './fetch-countries';
+import { fetchCountries } from './fetch-countries.js';
 import './css/styles.css';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
@@ -43,9 +43,10 @@ function createMarkup(countries) {
     Notiflix.Notify.failure(
       'Too many matches found. Please enter a more specific name.'
     );
-    return;
+    // return;
   } else if (countries.length === 1) {
     clearOutput();
+    let lang = '';
     const country = countries
       .map(({ name, flags, capital, population, languages }) => {
         for (let value in languages) {
